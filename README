@@ -11,7 +11,7 @@
 * **NVDA (Nvidia):** Jan 1, 2019 – Dec 31, 2019
 
 ## 2. Key Performance Indicators (KPIs)
-We rigorously assessed the quality of this dataset across four primary dimensions. Based on our data ingestion scripts, the dataset holds the following KPI ratings:
+I rigorously assessed the quality of this dataset across four primary dimensions. Based on my data ingestion scripts, the dataset holds the following KPI ratings:
 
 | Ticker | Completeness | Latency (Age of Data) | Accuracy | Consistency |
 | :--- | :--- | :--- | :--- | :--- |
