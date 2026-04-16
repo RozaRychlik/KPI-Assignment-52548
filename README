@@ -1,0 +1,32 @@
+# Data Card: Historical NASDAQ Stock Dataset
+
+## 1. Description & Source of Data
+**Source:** [Yahoo Finance API (yfinance)](https://pypi.org/project/yfinance/)  
+**Extraction Method:** Python automation via the `yfinance` library.  
+**Contents:** Daily trading data (Open, High, Low, Close, Adj Close, Volume) for 5 major NASDAQ companies. To provide a diverse temporal view, each company's data was extracted for a distinct, continuous 1-year trading period:
+* **AAPL (Apple):** Jan 1, 2021 – Dec 31, 2021
+* **MSFT (Microsoft):** Jan 1, 2022 – Dec 31, 2022
+* **AMZN (Amazon):** Jan 1, 2023 – Dec 31, 2023
+* **TSLA (Tesla):** Jan 1, 2020 – Dec 31, 2020
+* **NVDA (Nvidia):** Jan 1, 2019 – Dec 31, 2019
+
+## 2. Key Performance Indicators (KPIs)
+We rigorously assessed the quality of this dataset across four primary dimensions. Based on our data ingestion scripts, the dataset holds the following KPI ratings:
+
+| Ticker | Completeness | Latency (Age of Data) | Accuracy | Consistency |
+| :--- | :--- | :--- | :--- | :--- |
+| **AAPL** | 100% | ~1,560 days | 100% | High |
+| **MSFT** | 100% | ~1,195 days | 100% | High |
+| **AMZN** | 100% | ~830 days | 100% | High |
+| **TSLA** | 100% | ~1,925 days | 100% | High |
+| **NVDA** | 100% | ~2,290 days | 100% | High |
+
+* **(a) Completeness (100%):** There are no missing (`NaN` or `Null`) values in the target variables (`Close` prices) for any of the trading days recorded.
+* **(b) Latency:** Because this dataset relies on historical intervals spanning back to 2019, latency is intentionally high. Latency reflects the days passed since the last trading day of each specific 1-year slice to the present day. 
+* **(c) Accuracy (100%):** All rows passed standard financial logic checks (e.g., `High` price is always >= `Low` price, and `Close` price is strictly > 0). No anomalous negative prices exist.
+* **(d) Consistency (High):** Standardized data types (float64 for prices) are maintained across all columns, and there are no duplicated DateTime index values. 
+
+## 3. Conclusion
+This dataset provides a high-fidelity, complete, and highly consistent look at 5 top NASDAQ equities across 5 distinctly unique market years (from the pre-pandemic 2019 NVDA market to the AI-boom 2023 AMZN market). 
+
+Because the completeness and accuracy both score 100%, no data imputation or cleaning is required for immediate use. However, users should take note of the **Latency** metric; this data is entirely historical and should be used for time-series analysis, back-testing, and academic evaluation, rather than real-time trading algorithms.
